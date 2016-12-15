@@ -1,3 +1,23 @@
+.container {
+  margin-left: 10%;
+}
+
 .thumbnail {
-  max-width: 400px;
+  max-width: 275px;
+  height: 600px;
+}
+
+.thumbnail img {
+  height: 350px;
+  width: 250px;
+}
+
+.titlebox {
+  height: 30px;
+  overflow: hidden;
+}
+
+.description {
+  height: 100px;
+  overflow: hidden;
 }

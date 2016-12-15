@@ -1,17 +1,21 @@
 {{>navigation}}
-
+<div class="container">
   {{#each books}}
-    <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img class="book-img" src='{{image}}'>
+          <img src='{{image}}'>
           <div class="caption">
-            <h3>{{title}}</h3>
+            <div class="titlebox"><h4>{{title}}</h4></div>
             <h5>{{author}}</h5>
-            <p>...</p>
+            <p class="description">{{description}}</p>
             <p><a href="#" class="btn btn-primary" role="button">Add to My List</a></p>
           </div>
         </div>
       </div>
-      </div>
   {{/each}}
+</div>
+
+
+//Form to add new book
+
+//Search form
