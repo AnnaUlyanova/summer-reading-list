@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('author')
     table.string('image')
     table.text('description')
-    table.integer('listed')
+    table.boolean('listed')
   })
 };
 
