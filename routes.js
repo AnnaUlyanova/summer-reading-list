@@ -10,7 +10,8 @@ var db = require('./db.js')
 module.exports = {
   getBookList: getBookList,
   getReadingList: getReadingList,
-  getNotes: getNotes
+  getNotes: getNotes,
+  addBook: addBook
 }
 
 function cleanText (text) {
@@ -36,6 +37,22 @@ function getBookList(req, res) {
     .catch(function (err) {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
+}
+
+function addBook (req, res) {
+  var book = {
+    title: req.body.title,
+    author: req.body.author,
+    image: req.body.image,
+    description: req.body.description
+  }
+  db.insertBook(book)
+  .then( () => {
+    res.redirect('/')
+  })
+  .catch(function (err) {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  })
 }
 
 
