@@ -13,10 +13,23 @@ module.exports = {
   getNotes: getNotes
 }
 
+function cleanText (text) {
+  return text.toLowerCase()
+}
+
 function getBookList(req, res) {
+  var search = req.body.search
     db.getBooks()
-    .then(function (books) {
-      res.render('books', {books: books})
+    .then (function (books) {
+      if (search) {
+        books = books.filter(function (book) {
+          return cleanText(search).includes(cleanText(book.title)) || book.author.includes(search)
+        })
+      }
+      var data = {
+        books: books
+      }
+      res.render('books', data)
     })
     .catch(function (err) {
       res.status(500).send('DATABASE ERROR: ' + err.message)
