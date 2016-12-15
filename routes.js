@@ -18,12 +18,15 @@ function cleanText (text) {
 }
 
 function getBookList(req, res) {
-  var search = req.body.search
+  var search = req.query.search
     db.getBooks()
     .then (function (books) {
       if (search) {
         books = books.filter(function (book) {
-          return cleanText(search).includes(cleanText(book.title)) || book.author.includes(search)
+          var found = false
+          found = cleanText(book.title).includes(search)
+          found = cleanText(book.author).includes(search)
+          return found
         })
       }
       var data = {
