@@ -8,7 +8,8 @@
             <div class="titlebox"><h4>{{title}}</h4></div>
             <h5>{{author}}</h5>
             <p class="description">{{description}}</p>
-            <form action="/" method="post">
+            <form action="/add-book" method="post">
+              <input type="hidden" name="id" value="{{id}}">
             <p><button class="btn btn-primary" role="button">Add to My List</button></p>
             </form>
           </div>

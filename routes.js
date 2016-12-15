@@ -9,9 +9,10 @@ var db = require('./db.js')
 
 module.exports = {
   getBookList: getBookList,
-  getReadingList: getReadingList,
+  //getReadingList: getReadingList,
   getNotes: getNotes,
-  addBook: addBook
+  addBook: addBook,
+  addToMyList: addToMyList
 }
 
 function cleanText (text) {
@@ -56,9 +57,19 @@ function addBook (req, res) {
 }
 
 
-function getReadingList(req, res) {
-  res.render('list', {})
+function addToMyList (req, res) {
+  db.updateListed(Number(req.body.id))
+    .then(function () {
+      res.redirect('/')
+      })
 }
+
+
+// load the books if listed is true
+
+// function getReadingList(req, res) {
+//
+// }
 
 function getNotes (req, res) {
   res.render('notes', {})
