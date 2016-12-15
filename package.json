@@ -7,12 +7,15 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
-    "knex": "^0.12.6"
+    "knex": "^0.12.6",
+    "nodemon": "^1.11.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "knex": "knex",
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
