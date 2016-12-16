@@ -38,3 +38,8 @@ body {
   height: 100px;
   overflow: hidden;
 }
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  padding-bottom: 5%
+}
