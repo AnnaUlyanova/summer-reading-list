@@ -12,8 +12,8 @@
     </form>
     <br>
 
-      <button onclick ="$('#reviewForm{{id}}').toggle()">Write Review</button>
-      <div id="reviewForm{{id}}">
+      <button onclick ="$('#reviewForm{{id}}').toggleClass('hidden')">Write Review</button>
+      <div id="reviewForm{{id}}" class="hidden">
         <form action="/notes" method="post">
           <div class="form-group">
             <input type="hidden" name="id" value="{{id}}">
@@ -26,4 +26,5 @@
 
   {{/each}}
 </ul>
+<a href='/notes'>Show Notes</a>
 </div>

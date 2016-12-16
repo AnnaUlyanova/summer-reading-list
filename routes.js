@@ -91,7 +91,7 @@ function getNotes (req, res) {
   }
   db.insertNote(note)
   .then( () => {
-    res.redirect('/reading-list')
+    res.redirect('/notes')
   })
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
