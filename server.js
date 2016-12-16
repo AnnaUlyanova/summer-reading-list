@@ -26,7 +26,7 @@ server.use(bodyParser.urlencoded({ extended: true }))
 //Routes
 
 server.get('/', routes.getBookList)
-//server.get('/reading-list', routes.getReadingList)
+server.get('/reading-list', routes.getReadingList)
 server.get('/notes', routes.getNotes)
 server.post('/', routes.addBook)
 server.post('/add-book', routes.addToMyList)

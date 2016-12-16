@@ -9,7 +9,7 @@ var db = require('./db.js')
 
 module.exports = {
   getBookList: getBookList,
-  //getReadingList: getReadingList,
+  getReadingList: getReadingList,
   getNotes: getNotes,
   addBook: addBook,
   addToMyList: addToMyList
@@ -36,7 +36,7 @@ function getBookList(req, res) {
       res.render('books', data)
     })
     .catch(function (err) {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
+      res.status(500).send('Error' + err.message)
     })
 }
 
@@ -67,9 +67,16 @@ function addToMyList (req, res) {
 
 // load the books if listed is true
 
-// function getReadingList(req, res) {
-//
-// }
+function getReadingList(req, res) {
+  db.listedBooks()
+  .then(function (books) {
+    // var vm = {
+    //   title: book.title,
+    //   author: book.author,
+    // }
+    res.render('list', {books:books})
+  })
+}
 
 function getNotes (req, res) {
   res.render('notes', {})

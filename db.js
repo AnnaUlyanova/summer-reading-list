@@ -6,7 +6,8 @@ var connection = require('knex')(config)
 module.exports = {
   getBooks: getBooks,
   insertBook: insertBook,
-  updateListed: updateListed
+  updateListed: updateListed,
+  listedBooks: listedBooks
 }
 
 function getBooks () {
@@ -23,4 +24,11 @@ function updateListed(id) {
   return connection('books')
   .where("id", id)
   .update('listed', true)
+}
+
+function listedBooks () {
+  return connection('books')
+  .select('books.title', 'books.author')
+  .where('listed', true)
+
 }
