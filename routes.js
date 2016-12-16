@@ -12,7 +12,8 @@ module.exports = {
   getReadingList: getReadingList,
   getNotes: getNotes,
   addBook: addBook,
-  addToMyList: addToMyList
+  addToMyList: addToMyList,
+  deleteDoneBook: deleteDoneBook
 }
 
 function cleanText (text) {
@@ -70,10 +71,15 @@ function addToMyList (req, res) {
 function getReadingList(req, res) {
   db.listedBooks()
   .then(function (books) {
-    // var vm = {
-    //   title: book.title,
-    //   author: book.author,
-    // }
+    res.render('list', {books:books})
+  })
+}
+
+
+//delete from reading list
+function deleteDoneBook (req, res) {
+  db.listedToFalse()
+  .then(function (books) {
     res.render('list', {books:books})
   })
 }

@@ -7,7 +7,8 @@ module.exports = {
   getBooks: getBooks,
   insertBook: insertBook,
   updateListed: updateListed,
-  listedBooks: listedBooks
+  listedBooks: listedBooks,
+  listedToFalse: listedToFalse
 }
 
 function getBooks () {
@@ -31,4 +32,11 @@ function listedBooks () {
   .select('books.title', 'books.author')
   .where('listed', true)
 
+}
+
+//Change listed to false
+function listedToFalse () {
+  return connection('books')
+  .select('books.title', 'books.author')
+  .update('listed', false)
 }
