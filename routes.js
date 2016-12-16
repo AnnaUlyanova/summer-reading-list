@@ -13,7 +13,8 @@ module.exports = {
   getNotes: getNotes,
   addBook: addBook,
   addToMyList: addToMyList,
-  deleteDoneBook: deleteDoneBook
+  deleteDoneBook: deleteDoneBook,
+  showNotes: showNotes
 }
 
 function cleanText (text) {
@@ -91,9 +92,19 @@ function getNotes (req, res) {
   }
   db.insertNote(note)
   .then( () => {
-    res.redirect('/notes')
+    res.redirect('/reading-list')
   })
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
+  })
+}
+
+function showNotes (req, res) {
+  db.loadNotes()
+  .then(function(notes) {
+    var notes = {
+      notes: notes
+    }
+    res.render('notes', notes)
   })
 }

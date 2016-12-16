@@ -1,13 +1,11 @@
 {{>navigation}}
 
 <div class="container">
-  {{#each books}}
+  {{#each notes}}
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src='{{image}}'>
           <div class="caption">
-            <div class="titlebox"><h4>{{title}}</h4></div>
-            <p class="comments">{{comments}}</p>
+            <li><p class="comments">{{comments}}</p></li>
           </div>
         </div>
       </div>

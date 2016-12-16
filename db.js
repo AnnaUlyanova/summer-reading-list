@@ -9,7 +9,8 @@ module.exports = {
   updateListed: updateListed,
   listedBooks: listedBooks,
   listedToFalse: listedToFalse,
-  insertNote: insertNote
+  insertNote: insertNote,
+  loadNotes: loadNotes
 }
 
 function getBooks () {
@@ -45,4 +46,8 @@ function listedBooks () {
 function insertNote (note) {
   return connection('notes')
   .insert({comments: note.comments, book_id: note.book_id})
+}
+
+function loadNotes() {
+  return connection('notes')
 }
