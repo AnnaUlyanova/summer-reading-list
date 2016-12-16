@@ -8,19 +8,22 @@
     <p class="list-group-item"><strong>{{title}}</strong>: {{author}}</p>
     <form action="/reading-list"  method="post">
       <input type="hidden" name="id" value="{{id}}">
-<button class="btn btn-primary" role="button">Done</button>
+      <button class="btn btn-primary" role="button">Done</button>
     </form>
-
     <br>
-      <form action="/notes" method="post">
-        <h4>Write a Review</h4>
-        <div class="form-group">
-          <input type="hidden" name="id" value="{{id}}">
-          <label for="inputComment">Comment</label>
-          <textarea class="form-control" name="inputComment" rows="3" placeholder="Write comment"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Review</button>
-      </form>
-      {{/each}}
+
+      <button onclick ="$('#reviewForm{{id}}').toggle()">Write Review</button>
+      <div id="reviewForm{{id}}">
+        <form action="/notes" method="post">
+          <div class="form-group">
+            <input type="hidden" name="id" value="{{id}}">
+            <label for="inputComment">Comment</label>
+            <textarea class="form-control" name="inputComment" rows="3" placeholder="Write comment"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Review</button>
+        </form>
+      </div>
+
+  {{/each}}
 </ul>
 </div>
