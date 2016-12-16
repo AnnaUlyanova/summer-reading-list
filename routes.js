@@ -87,7 +87,7 @@ function deleteDoneBook (req, res) {
 function getNotes (req, res) {
   var note = {
     comments: req.body.inputComment,
-    book_id: req.body.id
+    book_id: Number(req.body.id)
   }
   db.insertNote(note)
   .then( () => {

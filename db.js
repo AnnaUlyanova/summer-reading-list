@@ -38,7 +38,7 @@ function listedToFalse (id) {
 
 function listedBooks () {
   return connection('books')
-  .select('books.title', 'books.author')
+  .select('books.title', 'books.author', 'books.id')
   .where('listed', true)
 }
 
