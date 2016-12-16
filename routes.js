@@ -78,12 +78,22 @@ function getReadingList(req, res) {
 
 //delete from reading list
 function deleteDoneBook (req, res) {
-  db.listedToFalse()
-  .then(function (books) {
-    res.render('list', {books:books})
+  db.listedToFalse(req.body.id)
+  .then(function () {
+    res.redirect('/reading-list')
   })
 }
 
 function getNotes (req, res) {
-  res.render('notes', {})
+  var note = {
+    comments: req.body.inputComment,
+    book_id: req.body.id
+  }
+  db.insertNote(note)
+  .then( () => {
+    res.redirect('/reading-list')
+  })
+  .catch(function (err) {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  })
 }

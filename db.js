@@ -8,7 +8,8 @@ module.exports = {
   insertBook: insertBook,
   updateListed: updateListed,
   listedBooks: listedBooks,
-  listedToFalse: listedToFalse
+  listedToFalse: listedToFalse,
+  insertNote: insertNote
 }
 
 function getBooks () {
@@ -27,16 +28,21 @@ function updateListed(id) {
   .update('listed', true)
 }
 
+//Change listed to false
+function listedToFalse (id) {
+  return connection('books')
+  .where("id", id)
+  .update('listed', false)
+}
+
+
 function listedBooks () {
   return connection('books')
   .select('books.title', 'books.author')
   .where('listed', true)
-
 }
 
-//Change listed to false
-function listedToFalse () {
-  return connection('books')
-  .select('books.title', 'books.author')
-  .update('listed', false)
+function insertNote (note) {
+  return connection('notes')
+  .insert({comments: note.comments, book_id: note.book_id})
 }
